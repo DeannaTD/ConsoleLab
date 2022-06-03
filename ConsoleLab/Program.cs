@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -7,57 +8,56 @@ namespace ConsoleLab
 {
     class Program
     {
-        public static string mSec(int num, string name) => num > 0 ? num == 1 ? num + " " + name + " " : num + " " + name + "s " : "";
-
-        public static string formatDuration(int total_seconds)
-        {
-            if (total_seconds == 0) return "now";
-
-            TimeSpan time = TimeSpan.FromSeconds(total_seconds);
-
-            int[] periods = { (int)time.TotalDays / 365, time.Days % 365, time.Hours, time.Minutes, time.Seconds };
-            string[] names = { "year", "day", "hour", "minute", "second" };
-            string result = "";
-
-            for (int i = 0; i < periods.Length; i++)
-                result += mSec(periods[i], names[i]);
-
-            result = (new Regex(@"\b(\w+)(\s)(\d+)\b")).Replace(result, "$1,$2$3");
-            result = (new Regex(@", (\d+) (\w+) $")).Replace(result, " and $1 $2");
-            result = (new Regex(@"\s$")).Replace(result, "");
-
-            return result;
-        }
-
         static void Main(string[] args)
         {
-            Regex regex = new Regex(@"<[a-z]+.*?>");
+            //JS function == object
+            //C# function != object
 
-            string str = "<p class='there'>Привет</p>\n<a href='hello.html'>ссылка</a>\n<form></form>";
+            int? a = 5;
+            a = 5;
+            string s = null;
+            Console.WriteLine(s ?? "null");
             
-                var matches = regex.Matches(str);
+            SayHello hello = SayHelloWorld;
+            hello -= SayHelloWorld;
 
-                for (int i = 0; i < matches.Count; i++)
-                {
-                    Console.WriteLine(matches[i].Value);
-                }
+
+            Print<int, double> p1 = new Print<int, double>(5);
+            Print<string, string> p2 = new Print<string, string>("hello");
+            Print<Fraction, int> p3 = new Print<Fraction, int>(new Fraction(1, 3));
+
+            p1.PrintValue();
+            p2.PrintValue();
+            p3.PrintValue();
+            //List<Fraction> list;
+
+            // nullable non-nullable
+            //users = GetAllOnlineUsers();
+            //users.SendMessage("Go to sleep!");
+
+
+            //class List<T>
         }
 
-        public static bool ValidatePin(string pin)
+        delegate void SayHello();
+
+        delegate bool NumberProperty(int value);
+
+        static bool IsEven(int a)
         {
-            return true;
+            return a % 2 == 0;
         }
 
-        //public static Bitmap CropImage(Image source, int x, int y, int width, int height)
-        //{
-        //    Rectangle crop = new Rectangle(x, y, width, height);
+        static bool isOdd(int a) => a % 2 != 0;
+        static void SayHelloWorld()
+        {
+            Console.WriteLine("Hello World");
+        }
 
-        //    var bmp = new Bitmap(crop.Width, crop.Height);
-        //    using (var gr = Graphics.FromImage(bmp))
-        //    {
-        //        gr.DrawImage(source, new Rectangle(0, 0, bmp.Width, bmp.Height), crop, GraphicsUnit.Pixel);
-        //    }
-        //    return bmp;
-        //}
+        static void PrintImHere()
+        {
+            Console.WriteLine("I'm here!");
+        }
+
     }
 }

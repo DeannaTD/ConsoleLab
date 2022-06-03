@@ -4,6 +4,23 @@ using System.Text;
 
 namespace ConsoleLab
 {
+
+    public class Print<T1, T2>
+    {
+        public T1 value;
+
+        public Print(T1 value)
+        {
+            this.value = value;
+        }
+
+        public void PrintValue()
+        {
+            Console.WriteLine(value.ToString());
+        }
+
+    }
+
     internal class Fraction
     {
         public int n { get; set; }
@@ -35,6 +52,11 @@ namespace ConsoleLab
         {
             if (f.n < c.n) return true;
             else return false;
+        }
+
+        public override string ToString()
+        {
+            return n + "/" + d;
         }
     }
 }
