@@ -5,20 +5,19 @@ using System.Text;
 namespace ConsoleLab
 {
 
-    public class Print<T1, T2>
+   public class Class<T1>
     {
-        public T1 value;
+        public T1 doll;
 
-        public Print(T1 value)
+        public Class(T1 doll)
         {
-            this.value = value;
+            this.doll = doll;
         }
 
-        public void PrintValue()
+        public T1 foo()
         {
-            Console.WriteLine(value.ToString());
+            return doll;
         }
-
     }
 
     internal class Fraction

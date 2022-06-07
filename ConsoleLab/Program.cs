@@ -10,33 +10,33 @@ namespace ConsoleLab
     {
         static void Main(string[] args)
         {
-            //JS function == object
-            //C# function != object
+            List<int> vs = new List<int>();
 
-            int? a = 5;
-            a = 5;
+            vs.Sort();
+
             string s = null;
             Console.WriteLine(s ?? "null");
             
             SayHello hello = SayHelloWorld;
             hello -= SayHelloWorld;
 
+            Action hello2 = SayHelloWorld;
+            Predicate<int> p = isOdd;
+            Func<int, bool> test = isOdd;
 
-            Print<int, double> p1 = new Print<int, double>(5);
-            Print<string, string> p2 = new Print<string, string>("hello");
-            Print<Fraction, int> p3 = new Print<Fraction, int>(new Fraction(1, 3));
+            Class<double> f = new Class<double>(4);
+            Type type = f.foo().GetType();
+            Console.WriteLine(type);
 
-            p1.PrintValue();
-            p2.PrintValue();
-            p3.PrintValue();
-            //List<Fraction> list;
-
-            // nullable non-nullable
-            //users = GetAllOnlineUsers();
-            //users.SendMessage("Go to sleep!");
-
-
-            //class List<T>
+            /*
+             * Action Func Predicate Task
+             * 
+             поля:
+                value - число
+             методы:
+                конструктор
+                метод, который умножает число на 2 и возвращает его
+             */
         }
 
         delegate void SayHello();
