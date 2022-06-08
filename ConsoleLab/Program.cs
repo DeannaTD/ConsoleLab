@@ -10,6 +10,11 @@ namespace ConsoleLab
     {
         static void Main(string[] args)
         {
+
+            //Action == delegate void
+            //Predicate == delegate bool
+            //Func == delegate *
+
             List<int> vs = new List<int>();
 
             vs.Sort();
@@ -23,6 +28,9 @@ namespace ConsoleLab
             Action hello2 = SayHelloWorld;
             Predicate<int> p = isOdd;
             Func<int, bool> test = isOdd;
+
+            Func<int, char, double> test2 = Test;
+
 
             Class<double> f = new Class<double>(4);
             Type type = f.foo().GetType();
@@ -39,9 +47,16 @@ namespace ConsoleLab
              */
         }
 
+        static double Test(int a, char b)
+        {
+            return 0.0;
+        }
+
         delegate void SayHello();
+        //delegate void Action();
 
         delegate bool NumberProperty(int value);
+        //delegate bool Predicate();
 
         static bool IsEven(int a)
         {
