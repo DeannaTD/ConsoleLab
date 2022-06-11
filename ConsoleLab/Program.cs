@@ -14,7 +14,7 @@ namespace ConsoleLab
             double d = 7.5;
             char c = 'a';
             string s = "hello";
-            Fraction f = new Fraction(1, 2);
+            Fraction f = new Fraction(1, 0);
 
             foo(i);
             foo(d);

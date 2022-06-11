@@ -74,6 +74,11 @@ namespace ConsoleLab
             else return false;
         }
 
+        public double ShowDouble()
+        {
+            return n / d;
+        }
+
         public override string ToString()
         {
             return n + "/" + d;
