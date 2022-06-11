@@ -21,17 +21,36 @@ namespace ConsoleLab
             foo(c);
             foo(s);
             foo(f);
-
-            //Teacher, Student, Manager, Admin, Trial, Lead
-            //List<Teacher>, List<Student>....
+            try
+            {
+                //.... ArgumentException
+            }
+            catch(ArgumentException e)
+            {
+                Console.WriteLine("Argument");
+            }
+            catch
+            {
+                Console.WriteLine("Other");
+            }
         }
 
-        //DRY - Don't Repeat Yourself
         public static void foo<T>(T num)
         {
             dynamic dnum = num;
             dynamic two = 2;
-            Console.WriteLine(two + dnum);
+            try
+            {
+                Console.WriteLine(two + dnum);
+            }
+            catch
+            {
+                Console.WriteLine("No operator + found");
+            }
+            finally
+            {
+                Console.WriteLine("Executed!");
+            }
         }
     }
 }
